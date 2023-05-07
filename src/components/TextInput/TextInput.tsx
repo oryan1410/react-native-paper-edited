@@ -325,7 +325,7 @@ const TextInput = forwardRef<TextInputHandles, Props>(
       // Show placeholder text only if the input is focused, or there's no label
       // We don't show placeholder if there's a label because the label acts as placeholder
       // When focused, the label moves up, so we can show a placeholder
-      if (focused || !rest.label) {
+      if (rest.label) {
         // If the user wants to use the contextMenu, when changing the placeholder, the contextMenu is closed
         // This is a workaround to mitigate this behavior in scenarios where the placeholder is not specified.
         if (rest.placeholder) {
@@ -362,7 +362,7 @@ const TextInput = forwardRef<TextInputHandles, Props>(
       // In minimized mode, the label moves up and becomes small
       // workaround for animated regression for react native > 0.61
       // https://github.com/callstack/react-native-paper/pull/1440
-      if (value || focused) {
+      if (!value || value || focused) {
         // minimize label
         Animated.timing(labeled, {
           toValue: 0,
